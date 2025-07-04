@@ -15,8 +15,8 @@ export const Hero = ({ toggleIsOpenForm }) => {
   // const [isOpen, toggleIsOpen] = useState(false);
 
   return (
-    <div className={"hero"}>
-      <Layout>
+    <Layout clsCustom="hero">
+      <div className="hero__wrapper">
         <Title
           title={"Отчётные документы для командированных"}
           className={"hero__titleMobile"}
@@ -36,7 +36,7 @@ export const Hero = ({ toggleIsOpenForm }) => {
           </div>
           {/* <HeroList /> */}
         </div>
-      </Layout>
-    </div>
+      </div>
+    </Layout>
   );
 };
