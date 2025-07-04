@@ -1,0 +1,37 @@
+@import '../../styles/mixins.scss';
+
+.ToggleSwitcher {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    background-color: #d4d4d4;
+    max-width: fit-content;
+    align-self: center;
+    cursor: pointer;
+
+    @media (max-width: 420px) {
+        flex-direction: column;
+    }
+
+    &__text {
+        padding: 12px 24px;
+        @include adaptive-px(font-size, 24, 14);
+        border-radius: 30px;
+        border: 2px solid transparent;
+        background-color: #d4d4d4;
+        transition: all 0.3s ease-in-out;
+
+        &__active {
+            background-color: var(--black);
+            color: var(--white);
+        }
+    }
+
+    &:hover {
+        >p {
+            border-color: var(--black);
+        }
+    }
+
+}

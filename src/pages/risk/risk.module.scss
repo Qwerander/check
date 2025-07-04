@@ -1,0 +1,38 @@
+.risk {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    @media (max-width: 460px) {
+        padding: 0 20px;
+    }
+}
+
+.risk__title {
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 36px;
+
+    @media (max-width: 475px) {
+        font-size: 24px;
+    }
+}
+
+.risk__subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 16px;
+    opacity: 0.9;
+}
+
+.risk__text {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 24px;
+    opacity: 0.85;
+    text-align: justify;
+    -webkit-hyphens: auto;
+hyphens: auto;
+}

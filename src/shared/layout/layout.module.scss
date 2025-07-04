@@ -1,0 +1,18 @@
+@import '../../styles/mixins.scss';
+
+.layout {
+  margin: 0 auto;
+  max-width: 1720px;
+  padding: 0px 100px;
+  background-color: transparent;
+  width: 100%;
+
+  @media (max-width: 960px) {
+
+    @include adaptive-px(padding-inline, 100, 20, 960, 640);
+  }
+  @media (max-width: 640px) {
+    padding-inline: 20px;
+  }
+}
+

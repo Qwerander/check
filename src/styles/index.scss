@@ -1,0 +1,14 @@
+@import './normalize.css';
+@import './reset.css';
+@import './colors.scss';
+@import './mixins.scss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import './settings.scss';
+
+@import './components/header.scss';
+@import './components/hero.scss';
+@import './components/info.scss';
+@import './components/benefits.scss';
+@import './components/docs.scss';
+@import './components/adventages.scss';
+@import './components/know.scss';

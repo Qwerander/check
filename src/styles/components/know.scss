@@ -1,0 +1,178 @@
+.know {
+    @include adaptive-px(margin-bottom, 100, 50);
+}
+
+.know__title {
+    @include adaptive-px(font-size, 50, 35, 1920, 800);
+    @include adaptive-px(margin-bottom, 50, 50, 1920, 800);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    text-align: left;
+    color: $black;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+    @media (max-width: 800px) {
+        @include adaptive-px(font-size, 35, 20, 800, 400);
+        @include adaptive-px(margin-bottom, 50, 35, 800, 400);
+    }
+}
+
+.know__wrapper {
+    position: relative;
+    @include adaptive-px(padding, 35, 25);
+    background: #cdcdce;
+    border-radius: 20px;
+
+    &::before {
+        position: absolute;
+        content: '';
+        top: 0;
+        right: 39px;
+        @include adaptive-px(width, 157, 85);
+        height: 100%;
+        background: transparent url('../../assets/img/know/know-decor.svg') repeat top right / contain;
+
+        @media (max-width: 640px) {
+            display: none;
+        }
+    }
+
+}
+
+.know__list {
+    display: flex;
+    flex-direction: column;
+    max-width: 75%;
+    gap: 25px;
+
+
+    @media (max-width: 640px) {
+        width: 100%;
+        max-width: unset;
+    }
+}
+
+.know__item {
+    background-color: $white;
+    @include adaptive-px(padding, 25, 15);
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+
+.know__text {
+    display: none;
+    @include adaptive-px(margin-top, 24, 16);
+    font-weight: 400;
+    @include adaptive-px(font-size, 20, 15);
+    line-height: 100%;
+    color: $black;
+    letter-spacing: -0.03em;
+    padding-block: 15px;
+    @include adaptive-px(padding-inline, 15, 10);
+    background-color: $white;
+    border-radius: 8px;
+
+}
+
+.know__header {
+    position: relative;
+    font-weight: 900;
+    @include adaptive-px(font-size, 25, 15);
+    line-height: 100%;
+    letter-spacing: -0.03em;
+    color: var(--light);
+    padding-right: 32px;
+
+
+    &::after,
+    &::before {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 50%;
+        width: 15px;
+        height: 4px;
+        background-color: $black;
+        transition: transform 0.3s ease;
+
+
+    }
+
+    &::before {
+        transform: translateY(-50%) rotate(-45deg);
+    }
+
+    &::after {
+        transform: translateY(-50%) rotate(45deg);
+        right: 9px;
+    }
+
+    @media (max-width: 640px) {
+        &::after {
+            top: 6px;
+            transform: rotate(45deg);
+        }
+
+        &::before {
+            top: 6px;
+            transform: rotate(-45deg);
+
+        }
+    }
+
+}
+
+
+
+.know__item.active .know__text {
+    display: block;
+}
+
+.know__item.active .know__header {
+    &::before {
+        transform: rotate(45deg);
+    }
+
+    &::after {
+        transform: rotate(-45deg);
+    }
+}
+
+
+/* Добавьте эти стили в ваш Know.css */
+
+.know__content {
+  overflow: hidden;
+  transition: height 0.3s ease-out;
+  height: 0;
+}
+
+.know__text {
+  margin-top: 24px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  color: var(--dark-blue);
+  letter-spacing: -0.03em;
+  padding-block: 15px;
+  padding-inline: 15px;
+  background-color: var(--light);
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.2s ease 0.1s;
+}
+
+.know__item.active .know__text {
+  opacity: 1;
+}
+
+/* Адаптивные стили остаются без изменений */
+@media (max-width: 800px) {
+  .know__text {
+    font-size: 15px;
+    padding-inline: 10px;
+    margin-top: 16px;
+  }
+}

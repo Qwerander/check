@@ -1,0 +1,31 @@
+@import '../../styles/mixins.scss';
+
+.ServicesPage {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    width: 100%;
+}
+
+
+.ServicesPage__formWrapper {
+    max-width: 640px;
+    border: 1px solid green;
+    border-radius: 50px;
+    padding-block: 24px;
+    align-self: center;
+
+    @media (max-width: 460px) {
+        padding-block: 0;
+        padding-inline: 12px;
+        padding-top: 36px;
+        border-radius: 0;
+        border-width: 10px 0 0 0;
+    }
+}
+
+
+
+.background {
+    background-color: #E9EFFE;
+}

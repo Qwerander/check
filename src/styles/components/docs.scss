@@ -1,0 +1,224 @@
+.docs {
+    @include adaptive-px(padding-block, 96, 48, 1920, 800);
+}
+
+.docs__wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.docs__title {
+    @include adaptive-px(font-size, 50, 35, 1920, 800);
+    @include adaptive-px(margin-bottom, 50, 50, 1920, 800);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    text-align: left;
+    color: $black;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+    @media (max-width: 800px) {
+        @include adaptive-px(font-size, 35, 20, 800, 400);
+        @include adaptive-px(margin-bottom, 50, 35, 800, 400);
+    }
+}
+
+.docs__block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+
+    @media (max-width: 1200px) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.docs__left {
+    display: flex;
+    flex-direction: column;
+    background-color: $main-color;
+    padding: 32px;
+    border-radius: 16px;
+
+    @media (max-width: 800px) {
+        @include adaptive-px(padding, 32, 24, 800, 360);
+    }
+}
+
+.docs__subtitle {
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 26px;
+    letter-spacing: -0.03em;
+    color: $white;
+    margin-bottom: 16px;
+}
+
+.docs__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+
+}
+
+.docs__item {
+    @include adaptive-px(padding-block, 12, 12, 1920, 800);
+    @include adaptive-px(padding-inline, 24, 24, 1920, 800);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    background-color: $main-color;
+    color: $white;
+    border-radius: 100px;
+
+    @media (max-width: 1200px) {
+        &:nth-child(1) {
+            order: 1;
+        }
+
+        &:nth-child(2) {
+            order: 3;
+        }
+
+        &:nth-child(3) {
+            order: 2;
+        }
+
+        &:nth-child(4) {
+            order: 4;
+        }
+
+        &:nth-child(5) {
+            order: 5;
+        }
+
+        &:nth-child(6) {
+            order: 6
+        }
+
+        &:nth-child(7) {
+            order: 7;
+        }
+    }
+
+
+
+    @media (max-width: 768px) {
+        padding-inline: 30px;
+        padding-block: 10px;
+        font-size: 14px;
+    }
+
+    @media (max-width: 720px) {
+        &:nth-child(1) {
+            order: 1;
+        }
+
+        &:nth-child(2) {
+            order: 3;
+        }
+
+        &:nth-child(3) {
+            order: 4;
+        }
+
+        &:nth-child(4) {
+            order: 5;
+        }
+
+        &:nth-child(5) {
+            order: 2;
+        }
+
+        &:nth-child(6) {
+            order: 6;
+        }
+
+        &:nth-child(7) {
+            order: 7;
+        }
+    }
+
+    @media (max-width: 480px) {
+        width: 100%;
+        text-align: center;
+
+        order: unset !important;
+    }
+}
+
+
+.docs__text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: $white;
+
+
+    @media (max-width: 800px) {
+        @include adaptive-px(font-size, 16, 14, 800, 360);
+    }
+}
+
+.docs__time {
+    position: relative;
+    white-space: nowrap;
+    padding-right: 35px;
+    @include adaptive-px(font-size, 25, 15, 1920, 800);
+    @include adaptive-px(padding-right, 35, 22, 1920, 800);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+    @media (max-width: 800px) {
+        font-size: 15px;
+        padding-right: 22px;
+    }
+
+    @media (max-width: 640px) {
+        align-self: flex-end;
+    }
+
+    >svg {
+        position: absolute;
+        right: 0;
+        bottom: 5px;
+        @include adaptive-px(width, 23, 16, 1920, 800);
+        @include adaptive-px(height, 11, 8, 1920, 800);
+
+        @media (max-width: 800px) {
+            width: 16px;
+            height: 8px;
+        }
+    }
+}
+
+.docs__item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.docs__left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.docs__item.visible,
+.docs__left.visible {
+    opacity: 1;
+    transform: translate(0);
+}

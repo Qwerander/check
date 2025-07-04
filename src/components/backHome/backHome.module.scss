@@ -1,0 +1,28 @@
+.backHome {
+    padding: 36px 0;
+}
+
+.backHome__link {
+    display: flex;
+    padding-left: 30px;
+    align-items: center;
+    gap: 12px;
+    font-size: 18px;
+    color: #19BE6F;
+
+    &:hover {
+        >svg {
+            animation: moveArrow 0.8s infinite linear;
+        }
+    }
+}
+
+@keyframes moveArrow {
+    0% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        transform: translateX(-10px);
+    }
+}

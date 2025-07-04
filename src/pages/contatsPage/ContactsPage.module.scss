@@ -1,0 +1,45 @@
+@import '../../styles/mixins.scss';
+
+.ContactsPage {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+    @include adaptive-px(gap, 40, 15);
+    width: 100%;
+    justify-content: space-between;
+    padding: 25px;
+    border: 3px dotted var(--green);
+    border-radius: 20px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+
+    &__contacts {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        h3 {
+            @include adaptive-px(font-size, 34, 18);
+        }
+
+        p {
+            @include adaptive-px(font-size, 22, 14);
+        }
+
+        h4 {
+
+            @include adaptive-px(font-size, 24, 14);
+        }
+
+    }
+
+    &__phone,
+    &__mail {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+}

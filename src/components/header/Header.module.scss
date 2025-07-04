@@ -1,0 +1,197 @@
+.header {
+    padding-top: 8px;
+    padding-bottom: 24px;
+    // margin-bottom: 60px;
+    box-shadow: var(--shadow);
+    background: var(--bg);
+    position: relative;
+
+    // @media (max-width: 460px) {
+    //     padding-inline: 20px;
+    // }
+    // box-shadow: 0px 1px 2px 0px #D5D5D5;
+
+    // min-height: 100vh;
+
+    // &::after {
+    //     position: absolute;
+    //     content: '';
+    //     left: 0;
+    //     top: 0;
+    //     right: 0;
+    //     bottom: 0;
+    //     background: linear-gradient(180deg, rgba(0, 0, 0, 0.48) 0, rgba(0, 0, 0, 0.64) 100%);
+    //     z-index: 10;
+    // }
+
+    // &::before {
+    //     position: absolute;
+    //     content: '';
+    //     left: 0;
+    //     top: 0;
+    //     right: 0;
+    //     bottom: 0;
+    //     background: url('../../img//homePage/header-bg.webp') no-repeat center / cover;
+    //     z-index: -1;
+    // }
+
+    &__wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    &__bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        @media (max-width: 560px) {
+            display: none;
+        }
+    }
+
+    &__wrapper {
+        padding: 20px;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--white);
+        width: 100%;
+        z-index: 100;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        >h3 {
+            margin-bottom: 36px;
+            font-size: 48px;
+            font-weight: 400;
+        }
+
+        >p {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        @media (max-width:552px) {
+            >h3 {
+                margin-bottom: 36px;
+                font-size: 36px;
+                font-weight: 400;
+            }
+
+            >p {
+                font-size: 18px;
+                margin-bottom: 12px;
+            }
+        }
+
+        @media (max-width: 446px) {
+            >h3 {
+                margin-bottom: 36px;
+                font-size: 24px;
+                font-weight: 400;
+            }
+
+            >p {
+                font-size: 16px;
+                margin-bottom: 12px;
+            }
+        }
+    }
+
+    &__btn {
+        // position: relative;
+        margin-top: 36px;
+        padding: 16px 48px;
+        // height: 44px;
+        background-color: var(--white);
+        outline: 0;
+        border-width: 0;
+        border-radius: 10px;
+        font-weight: 500;
+        -webkit-font-smoothing: subpixel-antialiased;
+        -moz-osx-font-smoothing: auto;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        vertical-align: middle;
+        color: var(--black);
+        transition: background-color 0.3s linear;
+
+        &:hover {
+            background-color: var(--white-hover);
+        }
+    }
+
+    // &__logo {
+    //     $time: 5s;
+    //     width: 200px;
+    //     animation: slide $time linear infinite;
+
+    //     @keyframes slide {
+    //         0% {
+    //             transform: translateX(0%);
+    //         }
+
+    //         50% {
+    //             transform: translateX(50%);
+    //         }
+
+    //         100% {
+    //             transform: translateX(0%);
+    //         }
+    //     }
+    // }
+}
+
+
+.payform_tbank {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 2px auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    max-width: 250px;
+}
+
+.payform_tbank_row {
+    margin: 2px;
+    border-radius: 4px;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    border: 1px solid #DFE3F3;
+    padding: 15px;
+    outline: none;
+    background-color: #DFE3F3;
+    font-size: 15px;
+}
+
+.payform_tbank_row:focus {
+    background-color: #FFFFFF;
+    border: 1px solid #616871;
+    border-radius: 4px;
+}
+
+.payform_tbank-btn {
+    background-color: #FBC520;
+    border: 1px solid #FBC520;
+    color: #3C2C0B;
+}
+
+.payform_tbank-btn:hover {
+    background-color: #FAB619;
+    border: 1px solid #FAB619;
+}

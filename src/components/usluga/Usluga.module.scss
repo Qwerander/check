@@ -1,0 +1,88 @@
+@import '../../styles/mixins.scss';
+
+.usluga {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  background: var(--bg);
+  gap: 20px;
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+
+  }
+
+  &__title {
+    @include adaptive-px(font-size, 30, 20);
+    font-weight: bold;
+    color: var(--text-primary);
+  }
+
+  &__description {
+    @include adaptive-px(font-size, 20, 15);
+    color: var(--text-secondary);
+  }
+
+  &__features {
+    list-style: disc;
+    padding-left: 30px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+  }
+  &__feature {
+    @include adaptive-px(font-size, 14, 12);
+    color: var(--gray);
+    position: relative;
+
+
+  }
+
+  &__price {
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+    color: var(--black);
+    margin-top: 10px;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    align-self: center;
+
+  }
+
+  &__button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: var(--btn);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: var(--ts);
+
+    &:hover {
+      background: var(--btn-hover);
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+
+    &__right {
+      justify-content: center;
+    }
+  }
+}
