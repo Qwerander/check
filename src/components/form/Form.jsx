@@ -19,27 +19,27 @@ export const Form = ({ toggleIsOpen, onClose}) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     const handleSubmit = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
 
-        // if (email && checkBox && emailRegex.test(email)) {
-        //     // Получите значения полей формы
-        //     const data = { email, name, message };
+        if (email && checkBox && emailRegex.test(email)) {
+            // Получите значения полей формы
+            const data = { email, name, message };
 
-        //     // Замените 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', 'YOUR_USER_ID' на ваши значения из EmailJS
-        //     emailjs
-        //         .send('service_2gn2q3q', 'template_dq42u02', data, 'ONIBtbVK1DV-Mnxow')
-        //         .then((response) => {
-        //             console.log('Успешно отправлено', response);
-        //         })
-        //         .catch((error) => {
-        //             console.error('Ошибка при отправке', error);
-        //         });
+            // Замените 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', 'YOUR_USER_ID' на ваши значения из EmailJS
+            emailjs
+                .send('service_f3d3gpm', 'template_46r6p8s', data, '9UYBO40lGP0XwuZ7m')
+                .then((response) => {
+                    console.log('Успешно отправлено', response);
+                })
+                .catch((error) => {
+                    console.error('Ошибка при отправке', error);
+                });
 
-        //     toggleIsOpenThanks(true);
-        //     toggleIsOpen(false);
-        // } else {
-        //     setError(true);
-        // }
+            toggleIsOpenThanks(true);
+            toggleIsOpen(false);
+        } else {
+            setError(true);
+        }
     };
 
     return (

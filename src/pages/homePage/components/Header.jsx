@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Layout } from "../../../shared/layout/Layout";
 import logo from "../../../assets/icons/header/logo.svg";
 
-export const Header = () => {
+export const Header = ({ toggleIsOpenForm }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -14,10 +14,10 @@ export const Header = () => {
     setIsMenuOpen(false);
   };
 
-
-
   return (
-    <header className={`header header--scroll ${isMenuOpen ? "header-open" : ""}`}>
+    <header
+      className={`header header--scroll ${isMenuOpen ? "header-open" : ""}`}
+    >
       <Layout>
         <div className="header__wrap">
           <a className="header__logo" href="/">
@@ -28,33 +28,56 @@ export const Header = () => {
               <div className="header__nav-inner">
                 <ul className="header__menu">
                   <li className="header__nav-item">
-                    <a className="header__nav-link" href="#benefits" onClick={() => setIsMenuOpen(false)}>
+                    <a
+                      className="header__nav-link"
+                      href="#benefits"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
                       Преимущества
                     </a>
                   </li>
                   <li className="header__nav-item">
-                    <a className="header__nav-link" href="#adventages" onClick={() => setIsMenuOpen(false)}>
+                    <a
+                      className="header__nav-link"
+                      href="#adventages"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
                       Особенности
                     </a>
                   </li>
                   <li className="header__nav-item">
-                    <a className="header__nav-link" href="#docs" onClick={() => setIsMenuOpen(false)}>
+                    <a
+                      className="header__nav-link"
+                      href="#docs"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
                       Документы
                     </a>
                   </li>
                   <li className="header__nav-item">
-                    <a className="header__nav-link" href="#know" onClick={() => setIsMenuOpen(false)}>
+                    <a
+                      className="header__nav-link"
+                      href="#know"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
                       Полезно знать
                     </a>
                   </li>
                   <li className="header__nav-item">
-                    <a className="header__nav-link" href="#contacts" onClick={() => setIsMenuOpen(false)}>
+                    <a
+                      className="header__nav-link"
+                      href="#contacts"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
                       Контакты
                     </a>
                   </li>
                 </ul>
                 <div className="header__buttons">
-                  <button className="header__link">
+                  <button
+                    className="header__link"
+                    onClick={() => toggleIsOpenForm(true)}
+                  >
                     Сделать заказ
                   </button>
                 </div>

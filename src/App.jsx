@@ -14,7 +14,7 @@ export const App = () => {
 
   return (
     <>
-      <Header />
+      <Header toggleIsOpenForm={toggleIsOpenForm}/>
       <Routes>
         <Route path="/" element={<HomePage toggleIsOpenForm={toggleIsOpenForm}/>} />
         {/* <Route path="/about" element={<AboutPage toggleIsOpenForm={toggleIsOpenForm}/>} />

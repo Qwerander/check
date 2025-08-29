@@ -13,28 +13,23 @@ export const Footer = () => {
               <p>Санис-восточная, 12</p>
               <p>Ежедневно с 10:00 до 19:00</p>
               <p>
-                <a href="mailto:info@attoyolom-praekt.pro" className="footer__link">
-                  info@attoyolom-praekt.pro
+                <a href="mailto:oooural@internet.ru" className="footer__link">
+                  oooural@internet.ru
                 </a>
               </p>
             </address>
 
             <div className="footer__phones">
               <p>
-                <a href="tel:+73472576039" className="footer__link">
-                  +7 (347) 257-60-39
-                </a>
-              </p>
-              <p>
-                <a href="tel:+79870389565" className="footer__link">
-                  +7 (987) 038-95-65
+                <a href="tel:+79871329881" className="footer__link">
+                  +7 (987) 132-98-81
                 </a>
               </p>
             </div>
           </div>
 
           <div className="footer__actions">
-            <button className="footer__checkButton">Позвонить</button>
+            <a className="footer__checkButton" href="tel:+79871329881">Позвонить</a>
           </div>
         </div>
       </Layout>
