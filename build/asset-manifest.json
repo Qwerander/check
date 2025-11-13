@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.44c6c83a.css",
+    "main.js": "/static/js/main.d9260531.js",
+    "static/media/hero-bg.webp": "/static/media/hero-bg.b5c5b79986422bb7f1e2.webp",
+    "static/media/info-img.webp": "/static/media/info-img.b1d11446553f00ae4ace.webp",
+    "static/media/6.svg": "/static/media/6.144c4f61547c9e28fe6c33b20fd60c83.svg",
+    "static/media/5.svg": "/static/media/5.11802ccb7a34196cd4eb249086f33c6b.svg",
+    "static/media/logo.svg": "/static/media/logo.868d6edb08c2dd8ba027cf7069e0503a.svg",
+    "static/media/1.svg": "/static/media/1.9fcb370a97a88cc9cf4c10d6145582d0.svg",
+    "static/media/4.svg": "/static/media/4.6819c0cc7ffa2ecedc7810544c096ee8.svg",
+    "static/media/3.svg": "/static/media/3.fddfc190c2403fff965ef753a94181e6.svg",
+    "static/media/adventages-1.webp": "/static/media/adventages-1.db4c048706f136c8ecc9.webp",
+    "static/media/adventages-3.webp": "/static/media/adventages-3.6c475fcf4fe4a9ad0f76.webp",
+    "static/media/adventages-2.webp": "/static/media/adventages-2.1a251cf84f306f9c53a6.webp",
+    "static/media/2.svg": "/static/media/2.cf17025f1ff15b11a8e0275329f611e4.svg",
+    "index.html": "/index.html",
+    "static/media/close.svg": "/static/media/close.f90283b309c5e6ebcd9323f3e4cf61f3.svg",
+    "static/media/know-decor.svg": "/static/media/know-decor.ae011d575233e6cf052b.svg",
+    "main.44c6c83a.css.map": "/static/css/main.44c6c83a.css.map",
+    "main.d9260531.js.map": "/static/js/main.d9260531.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.44c6c83a.css",
+    "static/js/main.d9260531.js"
+  ]
+}
