@@ -1,11 +1,11 @@
-import { Layout } from "../../shared/layout/Layout";
+// import { Layout } from "../../shared/layout/Layout";
 import { Adventages } from "./components/Adventages";
 import { Benefits } from "./components/Benefits";
 import { Docs } from "./components/Docs";
 import { Hero } from "./components/Hero";
 import { Info } from "./components/Info";
 import { Know } from "./components/Know";
-import cls from "./HomePage.module.scss";
+// import cls from "./HomePage.module.scss";
 // import { useState } from "react";
 
 // import { WhyChooseUs } from "../../components/homePage/whyChooseUs/WhyChooseUs";

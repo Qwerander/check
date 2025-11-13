@@ -1,5 +1,5 @@
 import infoImg from "../../../assets/img/info/info-img.webp";
-import { Layout } from "../../../shared/layout/Layout";
+// import { Layout } from "../../../shared/layout/Layout";
 
 export const Info = ({ toggleIsOpenForm }) => {
   return (

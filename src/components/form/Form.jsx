@@ -1,15 +1,23 @@
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import cls from './form.module.scss';
 import emailjs from 'emailjs-com';
 import { useState } from 'react';
 import { Modal } from '../../shared/Modal/Modal';
 import { ThankYouBox } from '../thankYouBox/ThankYouBox';
 import { ReactComponent as CloseSVG } from '../../assets/icons/close.svg';
-// import ReactInputMask from 'react-input-mask';
+import TrackedButton from '../TrackedButton/TrackedButton';
+import { usePhoneMask } from '../../hooks/usePhoneMask';
 
-export const Form = ({ toggleIsOpen, onClose}) => {
+// Добавляем функцию для отправки событий в Яндекс.Метрику
+const sendMetrikaEvent = (eventName, eventParams = {}) => {
+  if (typeof window !== 'undefined' && window.ym) {
+    window.ym(105284877, 'reachGoal', eventName, eventParams);
+  }
+};
+
+export const Form = ({ toggleIsOpen, onClose }) => {
     const [isOpenThanks, toggleIsOpenThanks] = useState(false);
-    // const [phone, setPhone] = useState('');
+    const [phone, handlePhoneChange] = usePhoneMask(); // Используем кастомный хук
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [message, setMessage] = useState('');
@@ -22,57 +30,88 @@ export const Form = ({ toggleIsOpen, onClose}) => {
         e.preventDefault();
 
         if (email && checkBox && emailRegex.test(email)) {
+            // Отправляем событие в Яндекс.Метрику при успешной валидации формы
+            sendMetrikaEvent('consultation_order', {
+                form_type: 'contact_form',
+                phone_provided: !!phone,
+                email_provided: !!email,
+                name_provided: !!name,
+                message_provided: !!message,
+                source: 'modal_form'
+            });
+
             // Получите значения полей формы
-            const data = { email, name, message };
+            const data = { phone, email, name, message };
 
             // Замените 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', 'YOUR_USER_ID' на ваши значения из EmailJS
             emailjs
                 .send('service_f3d3gpm', 'template_46r6p8s', data, '9UYBO40lGP0XwuZ7m')
                 .then((response) => {
                     console.log('Успешно отправлено', response);
+                    
+                    // Дополнительное событие при успешной отправке на сервер
+                    sendMetrikaEvent('consultation_success', {
+                        form_type: 'contact_form',
+                        status: 'success'
+                    });
                 })
                 .catch((error) => {
                     console.error('Ошибка при отправке', error);
+                    
+                    // Событие при ошибке отправки
+                    sendMetrikaEvent('consultation_error', {
+                        form_type: 'contact_form',
+                        status: 'error',
+                        error_type: 'emailjs_failed'
+                    });
                 });
 
             toggleIsOpenThanks(true);
             toggleIsOpen(false);
         } else {
             setError(true);
+            
+            // Отслеживаем ошибки валидации формы
+            sendMetrikaEvent('consultation_validation_error', {
+                form_type: 'contact_form',
+                errors: {
+                    email_invalid: !emailRegex.test(email),
+                    checkbox_not_checked: !checkBox,
+                    email_empty: !email
+                }
+            });
         }
     };
 
     return (
         <>
             <div className={cls.form}>
-                {onClose ? <CloseSVG className={cls.form__close} onClick={onClose}/> : null}
+                {onClose ? <CloseSVG className={cls.form__close} onClick={onClose} /> : null}
                 <h4 className={cls.form__title}>Свяжемся и уточним все детали</h4>
                 <p className={cls.form__descr}>
                     Оставьте свои контакты, мы ответим в ближайшее время
                 </p>
                 <form className={cls.form__form} onSubmit={handleSubmit}>
-                    {/* <label className={cls.form__label}>
+                    <label className={cls.form__label}>
                         <span>
                             Номер телефона <span>*</span>
                         </span>
-                        <ReactInputMask
+                        <input
                             onChange={(e) => {
                                 setError(false);
-                                setPhone(e.target.value);
+                                handlePhoneChange(e);
                             }}
                             className={cls.form__input}
-                            mask={'+7 (999) 999-99-99'}
+                            value={phone}
                             inputMode="numeric"
-                            placeholder={'+7 (___) - ___ - __ - __'}
-                            id={name}
+                            placeholder={'+7 (___) ___-__-__'}
                             type="tel"
-                            maskChar={''}
                         />
                         {error && !phoneRegExp.test(phone) ? <span className={cls.error}>Введите корректный номер</span> : '' }
-                    </label> */}
+                    </label>
                     <label className={cls.form__label}>
                         <span>
-                           Email <span>*</span>
+                            Email <span>*</span>
                         </span>
                         <input
                             onChange={(e) => {
@@ -80,9 +119,9 @@ export const Form = ({ toggleIsOpen, onClose}) => {
                                 setEmail(e.target.value);
                             }}
                             className={cls.form__input}
-                            type="text"
+                            type="email"
                         />
-                        {error && !phoneRegExp.test(email) ? <span className={cls.error}>Введите корректный адрес</span> : '' }
+                        {error && !emailRegex.test(email) ? <span className={cls.error}>Введите корректный адрес</span> : ''}
                     </label>
                     <label className={cls.form__label}>
                         Имя
@@ -112,7 +151,7 @@ export const Form = ({ toggleIsOpen, onClose}) => {
                         <input
                             className={cls.form__checkbox}
                             type="checkbox"
-                            value={checkBox}
+                            checked={checkBox}
                             onChange={(e) => {
                                 setError(false);
                                 toggleCheckbox(e.target.checked);
@@ -125,12 +164,25 @@ export const Form = ({ toggleIsOpen, onClose}) => {
                         )}
                         <span>
                             Отправляя форму, вы соглашаетесь с{' '}
-                            <NavLink className={cls.form__link} to="/politics" target='_blank'>
+                            {/* <NavLink className={cls.form__link} to="/politics" target='_blank'>
                                 политикой конфиденциальности
-                            </NavLink>
+                            </NavLink> */}
+                            <span>
+                                политикой конфиденциальности
+                            </span>
                         </span>
                     </label>
-                    <button className={cls.form__btn}>Заказать консультацию</button>
+                    <TrackedButton
+                        className={cls.form__btn}
+                        eventName="consultation_button_click"
+                        eventParams={{
+                            button_type: 'consultation_order',
+                            form_type: 'contact_form'
+                        }}
+                        type="submit"
+                    >
+                        Заказать консультацию
+                    </TrackedButton>
                 </form>
             </div>
             <Modal isOpen={isOpenThanks} onClose={toggleIsOpenThanks}>
